@@ -59,7 +59,6 @@ const product = (state = initialState, action) => {
         ...state
       }
     case 'DELETE_PRODUCTS_FULFILLED':
-      console.log(action.payload)
       const newProductAfterDelete = state.products.filter(products => products.id !== action.payload.data.result)
       return {
         ...state,

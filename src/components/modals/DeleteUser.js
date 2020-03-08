@@ -1,5 +1,5 @@
 import React from 'react'
-import { deleteUser } from '../redux/actions/user'
+import { deleteUser } from '../redux/actions/users'
 import { connect } from 'react-redux'
 import { Modal, Button } from 'react-bootstrap'
 
@@ -9,7 +9,8 @@ const DeleteUser = (props) =>
  
   const onDelete = async (e) => {
     e.preventDefault()
-    await dispatch(deleteUser(user))
+    console.log(user)
+    await dispatch(deleteUser(user.user_id))
     onHide()
   }
 

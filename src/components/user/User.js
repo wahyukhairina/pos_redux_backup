@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { getUser } from '../redux/actions/user'
+import { getUser } from '../redux/actions/users'
 import ListUser from './ListUser'
 import Navbar from '../layout/Navbar'
 import Sidebar from '../layout/Sidebar'
@@ -15,7 +15,7 @@ class User extends Component {
     state = {
         show : false,
         showDelete: false,
-        selectDelete: null
+        dataDelete: null
     }
 
 onGetUser = async() => {
@@ -51,9 +51,9 @@ closeDelete = () => {
 }
 
 
-onSelectDelete = (id) => {
+onSelectDelete = (user) => {
     this.setState({
-        selectDelete : id,
+        dataDelete : user,
         showDelete : true
     })
 }
@@ -107,7 +107,7 @@ onSelectDelete = (id) => {
                     </div>
                 </div>
                 <AddUser show={this.state.show} onHide={this.addClose} />
-                <DeleteUser show={this.state.showDelete} onHide={this.closeDelete} user={this.state.selectDelete}/>
+                <DeleteUser show={this.state.showDelete} onHide={this.closeDelete} user={this.state.dataDelete}/>
                 </>
         )
     }

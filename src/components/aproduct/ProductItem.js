@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { connect } from 'react-redux'
 import { addCart } from '../redux/actions/cart'
 
-const ProductItem = ({ products, onShowDelete, onShowEdit, dispatch }) => {
+const ProductItem = ({ products, onShowDelete, onShowEdit, dispatch, total, cart }) => {
 
   const onClickDelete = (e) => {
     e.preventDefault()
@@ -14,10 +15,26 @@ const ProductItem = ({ products, onShowDelete, onShowEdit, dispatch }) => {
   }
 
   const onAddCart = (e) => {
-    e.preventDefault()
-    const product = products
-    product.qty = 1
-    dispatch(addCart(product))
+    let i
+    cart.map(cart => {
+      if (cart.id === products.id) {
+        i = 0
+        return alert("Product have been added")
+      }
+      return products
+    })
+
+    if ( i !== 0) {
+      const InitialTotal = total
+      e.preventDefault()
+      const product = products
+      product.qty = 1
+      product.total = InitialTotal + product.price
+      dispatch(addCart(product))
+    }
+
+
+    
   }
 
   return (
@@ -45,5 +62,11 @@ const ProductItem = ({ products, onShowDelete, onShowEdit, dispatch }) => {
     </div>
   )
 }
+const mapStateToProps = (state) => {
 
-export default connect()(ProductItem)
+  return {
+    total: state.cart.total,
+    cart: state.cart.cart
+  }
+}
+export default connect(mapStateToProps)(ProductItem)

@@ -1,3 +1,5 @@
+
+
 export const addCart = (data) => {
   return {
     type: 'ADD_CART',
@@ -5,10 +7,10 @@ export const addCart = (data) => {
   }
 }
 
-export const addQty = (id) => {
+export const addQty = (cart) => {
   return {
     type: 'ADD_QTY',
-    payload: id
+    payload: cart
   }
 }
 

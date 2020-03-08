@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 import { connect } from 'react-redux';
-import { postUser } from '../redux/actions/user';
+import { postUser } from '../redux/actions/users';
 
 class AddUser extends Component{
  constructor(props) {

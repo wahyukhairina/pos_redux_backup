@@ -2,7 +2,7 @@ const initialState = {
   user: []
 }
 
-const user = (state = initialState, action) => {
+const users = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_USER_PENDING':
       return {
@@ -55,8 +55,10 @@ const user = (state = initialState, action) => {
         ...state
       }
     case 'DELETE_USER_FULFILLED':
-      const newUserAfterDelete = state.user.filter(user => user.id != action.payload.data)
-      console.log(action.payload)
+      
+      const newUserAfterDelete = state.user.filter(user => user.user_id !== action.payload.data.result)
+      console.log(state.user)
+  
       return {
         ...state,
         // isLoading: false,
@@ -86,4 +88,4 @@ const user = (state = initialState, action) => {
   }
 }
 
-export default user
+export default users

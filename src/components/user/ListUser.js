@@ -18,7 +18,7 @@ const ListUser = ({ user, onSelectDelete } ) => {
         <td>{user.data_added}</td>
         <td>{user.data_updated}</td>
 
-        <td><a className='fa fa-pencil-square-o fa-2x' title='Edit User' data-toggle='modal' style={{ cursor: 'pointer' }} />  - <a className='fa fa-trash-o fa-2x' title='Delete User' onClick={() => (onClickDelete(user.user_id))} style={{ color: 'black', cursor: 'pointer' }} /></td>
+        <td><a className='fa fa-pencil-square-o fa-2x' title='Edit User' data-toggle='modal' style={{ cursor: 'pointer' }} />  - <a className='fa fa-trash-o fa-2x' title='Delete User' onClick={onClickDelete} style={{ color: 'black', cursor: 'pointer' }} /></td>
       </tr>
     </>
   )

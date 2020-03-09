@@ -62,16 +62,13 @@ export const sortProduct = (auth, type) => {
   }
 }
 
-export const paginationProduct = (page) => {
+export const paginationProduct = (auth, page) => {
   return {
     type: 'PAGINATION',
     payload: axios ({
       method: 'GET',
       url: `${process.env.REACT_APP_API_URL}/product/?page=${page}`,
-      headers: {
-        authorization: localStorage.getItem('token'),
-        'user-id': localStorage.getItem('user-id')
-      }
+      headers: auth
     })
   }
 }

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { addCart } from '../redux/actions/cart'
 
 const ProductItem = ({ products, onShowDelete, onShowEdit, dispatch, total, cart }) => {
-
   const onClickDelete = (e) => {
     e.preventDefault()
     onShowDelete(products)
@@ -14,17 +13,24 @@ const ProductItem = ({ products, onShowDelete, onShowEdit, dispatch, total, cart
     onShowEdit(products)
   }
 
+  const convertToRupiah = (angka) => {
+    var rupiah = ''
+    var angkarev = angka.toString().split('').reverse().join('')
+    for (var i = 0; i < angkarev.length; i++) if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.'
+    return 'Rp. ' + rupiah.split('', rupiah.length - 1).reverse().join('') + ',-'
+  }
+
   const onAddCart = (e) => {
     let i
     cart.map(cart => {
       if (cart.id === products.id) {
         i = 0
-        return alert("Product have been added")
+        return alert('Product have been added')
       }
       return products
     })
 
-    if ( i !== 0) {
+    if (i !== 0) {
       const InitialTotal = total
       e.preventDefault()
       const product = products
@@ -32,9 +38,6 @@ const ProductItem = ({ products, onShowDelete, onShowEdit, dispatch, total, cart
       product.total = InitialTotal + product.price
       dispatch(addCart(product))
     }
-
-
-    
   }
 
   return (
@@ -43,7 +46,7 @@ const ProductItem = ({ products, onShowDelete, onShowEdit, dispatch, total, cart
         <ul class='card-header' style={{ fontWeight: 'bold' }}>{products.name}</ul>
         <img className='rounded mx-auto d-block' style={{ marginTop: '3px', width: 210, height: 210 }} src={products.image} />
         <div className='card-body'>
-          <h5 className='card-title'>Rp.{products.price}</h5>
+          <h5 className='card-title'>{convertToRupiah(products.price)}</h5>
           <div className='row'>
             <div className='col-md-4'>
               <span className='fa fa-shopping-cart fa-2x' onClick={onAddCart} style={{ cursor: 'pointer' }} />
@@ -63,7 +66,6 @@ const ProductItem = ({ products, onShowDelete, onShowEdit, dispatch, total, cart
   )
 }
 const mapStateToProps = (state) => {
-
   return {
     total: state.cart.total,
     cart: state.cart.cart

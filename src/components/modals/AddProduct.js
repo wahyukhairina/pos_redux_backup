@@ -53,7 +53,6 @@ class AddProduct extends Component{
         this.props.onHide();
     }
     render(){
-        console.log(this.props)
         return(
             <Modal show={this.props.show} onHide={this.props.onHide}>
                 <Modal.Header closeButton>

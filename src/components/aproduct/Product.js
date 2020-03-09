@@ -88,8 +88,14 @@ state = {
         await this.props.dispatch(getProducts(auth))
     }
 
-    paginateProduct = (event) => {
-        this.props.dispatch(paginationProduct(event.target.id))
+    paginateProduct = async (e) => {
+        const page = e.target.id
+        const { profile }= this.props.auth
+        const auth = {
+            authorization : profile.token,
+            'user-id': profile.user_id
+        }
+        this.props.dispatch(paginationProduct(auth, page))
       }
 
     onShowDelete = (products) => {
@@ -152,6 +158,7 @@ state = {
     {
 
         const { products,pagination } = this.props
+        console.log(pagination)
         
         const ItemProduct = products.map((products) => 
         <ProductItem products={ products } key={products.id} onShowDelete={this.onShowDelete } onShowEdit={this.onShowEdit}/>
@@ -225,6 +232,7 @@ state = {
 }
 
 const mapStateToProps = (state) => {
+    // console.log(state.products.pagination)
     return {
         products: state.products.products,
         pagination: state.products.pagination,

@@ -56,7 +56,7 @@ class Checkout extends Component{
                         {cart.qty}
                     </div>
                     <div>
-                        {this.convertToRupiah(cart.price)}                         
+                        {this.convertToRupiah(cart.price * cart.qty)}                         
                     </div>
                     </div>
                     ) }

@@ -23,10 +23,10 @@ onGetUser = async() => {
 }
 
 componentDidMount(){
-    if (localStorage.getItem('status') !== 'admin') {
-        alert ('Sorry dear, you are not Admin :)')
-        this.props.history.push('/')
-      }
+    // if (localStorage.getItem('status') !== 'admin') {
+    //     alert ('Sorry dear, you are not Admin :)')
+    //     this.props.history.push('/')
+    //   }
     this.onGetUser()
 }
 
@@ -52,7 +52,9 @@ closeDelete = () => {
 
 
 onSelectDelete = (user) => {
+    console.log(user)
     this.setState({
+        
         dataDelete : user,
         showDelete : true
     })

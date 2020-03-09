@@ -9,6 +9,8 @@ import EditProduct from '../modals/EditProduct'
 import AddProduct from '../modals/AddProduct'
 import Chart from '../product/CartItem'
 import CartItem from '../product/CartItem'
+import { withRouter } from 'react-router-dom'
+require ('query-string')
 
 class Product extends Component {
 state = {
@@ -16,9 +18,15 @@ state = {
     dataDelete: null,
     showEdit: false,
     dataEdit: null,
-    addshow: false
+    addshow: false,
+    type: ''
 }
+
+
+
     componentDidMount(){
+    
+       
         this.getAllProducts()
     }
 
@@ -68,9 +76,22 @@ state = {
         this.props.dispatch(searchProduct(e.target.value))
       }
 
-      onClickSort = (e) => {
+      onClickSort = async (e) => {
         // console.log(e.target.value)
-        this.props.dispatch(sortProduct(e.target.value))
+      
+       await this.setState({
+            type: e.target.value
+        })
+        
+        const type = this.state.type
+        console.log(type)
+        this.props.history.push(`/product/?sortType=${type}`)
+        const { profile }= this.props.auth
+        const auth = {
+            authorization : profile.token,
+            'user-id': profile.user_id
+        }
+        this.props.dispatch(sortProduct(auth, type))
       }
       addShow = (e) => {
         this.setState({
@@ -162,4 +183,4 @@ const mapStateToProps = (state) => {
         auth: state.auth
     }
 }
-export default connect(mapStateToProps)(Product)
+export default withRouter(connect(mapStateToProps)(Product))

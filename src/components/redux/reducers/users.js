@@ -55,7 +55,7 @@ const users = (state = initialState, action) => {
         ...state
       }
     case 'DELETE_USER_FULFILLED':
-      
+      console.log(action.payload)
       const newUserAfterDelete = state.user.filter(user => user.user_id !== action.payload.data.result)
       console.log(state.user)
   

@@ -3,7 +3,10 @@ import { Button } from 'react-bootstrap'
 
 const ListUser = ({ user, onSelectDelete } ) => {
 
-  const onClickDelete = (id) => {
+  const onClickDelete = (e) => {
+    e.preventDefault()
+    const id = user.user_id
+    console.log(id)
     onSelectDelete(id)
   }
 

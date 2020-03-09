@@ -2,7 +2,7 @@ import axios from 'axios'
 require ( 'dotenv' ).config()
 
 export const getProducts = (data) => {
-  // console.log(process.env)
+  console.log(process.env)
   return {
     type: 'GET_PRODUCTS',
     payload: axios({
@@ -51,16 +51,15 @@ export const searchProduct = (name) => {
   }
 }
 
-export const sortProduct = (type) => {
+export const sortProduct = (auth, type) => {
   return {
     type: 'SORT_PRODUCTS',
-    payload: axios.get(`${process.env.REACT_APP_API_URL}/product/?sort=price&type=${type}`, {
-      headers: {
-        authorization: localStorage.getItem('token'),
-        'user-id': localStorage.getItem('user-id')
-    }
-    }) 
-}
+    payload: axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_API_URL}/product/?sort=price&type=${type}`,
+      headers: auth
+    })
+  }
 }
 
 export const paginationProduct = (page) => {

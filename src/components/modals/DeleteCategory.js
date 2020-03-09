@@ -1,17 +1,17 @@
 import React from 'react'
-import { deleteUser } from '../redux/actions/users'
+import { deleteCategory } from '../redux/actions/category'
 import { connect } from 'react-redux'
 import { Modal, Button } from 'react-bootstrap'
 
-const DeleteUser = (props) =>
-{
-  const { show, onHide, user, dispatch } = props
- 
+const DeleteCategory = (props) => {
+  const { show, onHide, category, dispatch } = props
+
   const onDelete = async (e) => {
     e.preventDefault()
+    await dispatch(deleteCategory(category.id))
     
-    await dispatch(deleteUser(user))
     onHide()
+    
   }
 
   return (
@@ -20,7 +20,7 @@ const DeleteUser = (props) =>
         <Modal.Title>Delete Confirmation</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-            Are you sure want to delete this user?
+            Are you sure want to delete this category?
         <img style={{ marginLeft: '100px' }} />
         <ul style={{ textAlign: 'center' }} />
       </Modal.Body>
@@ -29,4 +29,4 @@ const DeleteUser = (props) =>
   )
 }
 
-export default connect()(DeleteUser)
+export default connect()(DeleteCategory)

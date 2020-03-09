@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addQty, reduceQty, removeItem } from '../redux/actions/cart'
+import Checkout from '../modals/Checkout'
 
 class CartItem extends Component {
   state = {
-    total: null
+    total: null,
+    show: false
   }
 
  addQuantity =async (cart) => {
@@ -36,6 +38,18 @@ class CartItem extends Component {
    const total = initialTotal - (cart.qty * cart.price)
    cart.total = total
    this.props.dispatch(removeItem(cart))
+ }
+ 
+ checkoutShow = () => {
+   this.setState ({
+     show: true
+   })
+ }
+
+ checkoutClose = () => {
+   this.setState ({
+     show: false
+   })
  }
 
   render () {
@@ -70,7 +84,7 @@ class CartItem extends Component {
       )}
       <div style={{paddingTop:'10px'}} className='row'>
         <div className='col-md-8'>  Total : Rp. {initialTotal} </div>
-        <div className='col-md-3'><button style={{backgroundColor: '#DB7093'}}>Checkout</button></div>
+        <div className='col-md-3'><button style={{backgroundColor: '#DB7093'}} onClick={this.checkoutShow}>Checkout</button></div>
       
       </div>
       </div>
@@ -80,6 +94,8 @@ class CartItem extends Component {
 <ul style={{ marginLeft: '50px'}}>Your cart is empty</ul>
 </div>
 }
+
+      <Checkout show={this.state.show} onHide={this.checkoutClose} cart ={ cart} total = {initialTotal} />
       </>
     )
   }

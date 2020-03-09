@@ -31,6 +31,23 @@ const category = (state = initialState, action) => {
         ...state,
         category: newDataCategory
       }
+    case 'DELETE_CATEGORY_PENDING':
+      return {
+        ...state
+      }
+    case 'DELETE_CATEGORY_REJECTED' :
+      return {
+        ...state
+      }
+    case 'DELETE_CATEGORY_FULFILLED':
+      console.log(action.payload)
+      const newAfterDelete = state.category.filter(item => item.id !== action.payload.data.result)
+      console.log(newAfterDelete)
+      return {
+        ...state,
+        isLoading: false,
+        category: newAfterDelete
+      }
     default:
       return state
   }

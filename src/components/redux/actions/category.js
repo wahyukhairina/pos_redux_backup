@@ -17,3 +17,10 @@ export const postCategory = (data) => {
     payload: axios.post(`${process.env.REACT_APP_API_URL}/category`, data)
   }
 }
+
+export const deleteCategory = (id) => {
+  return {
+    type: 'DELETE_CATEGORY',
+    payload: axios.delete(`http://localhost:8006/category/${id}`)
+  }
+}

@@ -1,44 +1,31 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux'
+import { login } from '../redux/actions/auth'
 
 class Login extends Component{
     constructor(props){
         super(props);
 
-        this.state = {
-            username: '',
-            password: ''
-        };
+        // this.state = {
+        //     username: '',
+        //     password: ''
+        // };
     }
 
     componentDidMount(){
-        if(localStorage.getItem('token')){
-            this.props.history.push('/');
-        }
+       if(this.props.auth.isAuthenticated){
+           this.props.history.push('/')
+       }
     }
 
     onChange = (e) => {
         this.setState({ [e.target.name] : e.target.value })
     }
 
-    onSubmit = (e) => {
+    onSubmit = async (e) => {
         e.preventDefault();
-        
-
-        axios
-            .post("http://localhost:8006/user/login", this.state)
-            .then(res => {
-                console.log(res.data);
-                localStorage.setItem('token', res.data.token);
-                localStorage.setItem('user-id', res.data.user_id);
-                localStorage.setItem('isAuth', true);
-                localStorage.setItem('name', res.data.username);
-                localStorage.setItem('status', res.data.status)
-                this.props.history.push('/');
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        await this.props.dispatch(login(this.state))
+        await this.props.history.push('/')
     }
 
     render(){
@@ -66,4 +53,10 @@ class Login extends Component{
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
+    }
+}
+
+export default connect (mapStateToProps)(Login)

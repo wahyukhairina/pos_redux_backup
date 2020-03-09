@@ -23,9 +23,14 @@ state = {
     }
 
     getAllProducts = async() => {
-      
-        await this.props.dispatch(getProducts())
+        const { profile }= this.props.auth
+        const auth = {
+            authorization : profile.token,
+            'user-id': profile.user_id
+        }
+        await this.props.dispatch(getProducts(auth))
     }
+
     paginateProduct = (event) => {
         this.props.dispatch(paginationProduct(event.target.id))
       }
@@ -153,7 +158,8 @@ state = {
 const mapStateToProps = (state) => {
     return {
         products: state.products.products,
-        pagination: state.products.pagination
+        pagination: state.products.pagination,
+        auth: state.auth
     }
 }
 export default connect(mapStateToProps)(Product)

@@ -1,17 +1,14 @@
 import axios from 'axios'
-require ( 'dotenv' ).config();
+require ( 'dotenv' ).config()
 
-export const getProducts = () => {
+export const getProducts = (data) => {
   // console.log(process.env)
   return {
     type: 'GET_PRODUCTS',
     payload: axios({
       method: 'GET',
       url: `${process.env.REACT_APP_API_URL}/product`,
-      headers: {
-        authorization: localStorage.getItem('token'),
-        'user-id': localStorage.getItem('user-id')
-      }
+      headers: data
     })
   }
 }

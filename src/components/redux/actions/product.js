@@ -38,15 +38,15 @@ export const updateProduct = (productId, data) => {
   }
 }
 
-export const searchProduct = (name) => {
+export const searchProduct = (name, auth) => {
   return {
     type: 'SEARCH_PRODUCTS',
-    payload: axios.get(`h${process.env.REACT_APP_API_URL}/product/?searchName=${name}`, {
-      headers: {
-        authorization: localStorage.getItem('token'),
-        'user-id': localStorage.getItem('user-id')
-      }
+    payload: axios({
+      method: 'GET',
+      url: `${process.env.REACT_APP_API_URL}/product/?searchName=${name}`,
+      headers: auth
     })
+   
     
   }
 }

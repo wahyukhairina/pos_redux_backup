@@ -10,7 +10,7 @@ import AddProduct from '../modals/AddProduct'
 import Chart from '../product/CartItem'
 import CartItem from '../product/CartItem'
 import { withRouter } from 'react-router-dom'
-require ('query-string')
+import querystring from 'query-string'
 
 class Product extends Component {
 state = {
@@ -19,15 +19,64 @@ state = {
     showEdit: false,
     dataEdit: null,
     addshow: false,
-    type: ''
+    type: '',
+    search: ''
 }
 
 
 
-    componentDidMount(){
-    
+    componentDidMount () {
+        var q = querystring.parse(this.props.location.search);
+        
+      if (q.sortType !== undefined) {
+           const type = q.sortType
+           const { profile }= this.props.auth
+           const auth = {
+           authorization : profile.token,
+           'user-id': profile.user_id
+            }
+            console.log ('ini type ', type)
+            this.props.dispatch(sortProduct(auth, type))
+
+       }
+       else if (q.searchName !== undefined) {
+           const search = q.searchName
+           this.setState({
+               search : search
+           })
+           this.props.history.push(`/product/?searchName=${search}`)
+           const { profile }= this.props.auth
+           const auth = {
+               authorization : profile.token,
+               'user-id': profile.user_id
+           }
+          this.props.dispatch(searchProduct(search, auth));    
+        }
+       else{
+           console.log('getall')
+           this.getAllProducts()
+       }
        
-        this.getAllProducts()
+    }
+
+    onChange = (e) => {
+        e.preventDefault()
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+    onSubmitSearch = async (e) => {
+        e.preventDefault()
+        
+        const search = this.state.search
+        await this.props.history.push(`/product/?searchName=${search}`)
+        const { profile }= this.props.auth
+        const auth = {
+            authorization : profile.token,
+            'user-id': profile.user_id
+        }
+       this.props.dispatch(searchProduct(search, auth));
+       
     }
 
     getAllProducts = async() => {
@@ -70,12 +119,6 @@ state = {
         })
     } 
 
-    onChangeSearch = (e) => {
-
-        // console.log(e.target.value)
-        this.props.dispatch(searchProduct(e.target.value))
-      }
-
       onClickSort = async (e) => {
         // console.log(e.target.value)
       
@@ -107,6 +150,7 @@ state = {
 
     render ()
     {
+
         const { products,pagination } = this.props
         
         const ItemProduct = products.map((products) => 
@@ -129,12 +173,16 @@ state = {
                         </div>
                         <div className='col-md-11'>
                             <div className='row'>
-                                <div className='col-md-4'>
-                                <nav class="navbar navbar-light bg-light">
-                    <input className='form-control mr-sm-2' type='search' placeholder='Search' onChange={this.onChangeSearch} aria-label='Search' />
-                    </nav>
+                                <div className='col-md-6'>
+                                
+                    <nav class="navbar navbar-light bg-light">
+  <form className="form-inline" onSubmit={this.onSubmitSearch}>
+    <input className="form-control mr-sm-2" type="search" placeholder="Search Product" name='search' onChange={this.onChange} aria-label="Search"/>
+    <button className="btn btn" style={{background:"#DB7093", color:'#e9e9e9'}} type="submit">Search</button>
+     </form>
+    </nav>
                                 </div>
-                                <div className='col-md-7'>
+                                <div className='col-md-5'>
                                 </div>
                                 <div className='col-md-1'>
                                 <a onClick={this.addShow} title='Add Product' style={{ marginTop: '10px', marginLeft: '8px', color: 'grey' }} className='fa fa-plus fa-2x' href='#' />

@@ -33,6 +33,14 @@ class CartItem extends Component {
     }
  }
  
+ convertToRupiah(angka)
+{
+	var rupiah = '';		
+	var angkarev = angka.toString().split('').reverse().join('');
+	for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+	return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('')+',-';
+}
+
  removeItem = (cart) => {
    const initialTotal = this.props.total
    const total = initialTotal - (cart.qty * cart.price)
@@ -83,7 +91,7 @@ class CartItem extends Component {
         </div>
       )}
       <div style={{paddingTop:'10px'}} className='row'>
-        <div className='col-md-8'>  Total : Rp. {initialTotal} </div>
+        <div className='col-md-8'>  Total : { this.convertToRupiah(initialTotal)} </div>
         <div className='col-md-3'><button style={{backgroundColor: '#DB7093'}} onClick={this.checkoutShow}>Checkout</button></div>
       
       </div>

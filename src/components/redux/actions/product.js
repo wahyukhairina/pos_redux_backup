@@ -2,7 +2,7 @@ import axios from 'axios'
 require ( 'dotenv' ).config()
 
 export const getProducts = (data) => {
-  console.log(process.env)
+  console.log('product',process.env.REACT_APP_API_URL)
   return {
     type: 'GET_PRODUCTS',
     payload: axios({

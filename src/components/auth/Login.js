@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login } from '../redux/actions/auth'
-
+require('dotenv').config()
 class Login extends Component{
     constructor(props){
         super(props);
@@ -24,6 +24,7 @@ class Login extends Component{
 
     onSubmit = async (e) => {
         e.preventDefault();
+        console.log(this.state)
         await this.props.dispatch(login(this.state))
         await this.props.history.push('/')
     }

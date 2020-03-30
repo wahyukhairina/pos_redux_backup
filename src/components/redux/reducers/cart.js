@@ -55,6 +55,12 @@ const cart = (state = initialState, action) => {
           cart: newRemove,
           total: retotal
         }
+
+        case 'REMOVE_CART':
+        return{
+          ...state,
+          cart: []
+        }
     default:
       return state
   }

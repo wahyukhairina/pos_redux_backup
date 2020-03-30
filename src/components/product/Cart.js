@@ -7,17 +7,11 @@ class Cart extends Component {
     super(props)
 
     this.state = {
-    //   cart: []
     }
   }
 
   render () {
-    // const { cart } = this.props
-    // const ItemCart = cart.map((cart) => {
-    //   return (
-    //     <CartItem cart={cart} key={cart.id} />
-    //   )
-    // })
+   
 
     return (
       <>        

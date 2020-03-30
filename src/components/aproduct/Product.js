@@ -158,8 +158,6 @@ state = {
     {
 
         const { products,pagination } = this.props
-        console.log(pagination)
-        
         const ItemProduct = products.map((products) => 
         <ProductItem products={ products } key={products.id} onShowDelete={this.onShowDelete } onShowEdit={this.onShowEdit}/>
         ) 

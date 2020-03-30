@@ -4,7 +4,6 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-  console.log('direducer',action)
   switch (action.type) {
     case 'LOGIN_USER_PENDING':
       return {

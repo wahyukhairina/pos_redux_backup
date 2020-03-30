@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-
+import { getCategory } from '../redux/actions/category'
 import { connect } from 'react-redux';
 import { postProduct } from '../redux/actions/product';
 
@@ -19,6 +19,9 @@ class AddProduct extends Component{
     }
  }
     
+    componentDidMount (){
+        this.props.dispatch(getCategory())
+    }
 
     onChangeValue = (event) => {
         this.setState({
@@ -32,10 +35,7 @@ class AddProduct extends Component{
         })
     }
 
-    // postProduct () {
-    //     this.props.dispatch(postProduct())
-    //   }
-
+  
     onSubmit = (event) => {
         event.preventDefault()
     
@@ -53,6 +53,8 @@ class AddProduct extends Component{
         this.props.onHide();
     }
     render(){
+        const { category } = this.props;
+        console.log('cat', this.state)
         return(
             <Modal show={this.props.show} onHide={this.props.onHide}>
                 <Modal.Header closeButton>
@@ -79,9 +81,14 @@ class AddProduct extends Component{
                         <Form.Group>
                         <Form.Label>Category</Form.Label>
                         <Form.Control type="text" placeholder="Enter Category" defaultValue={"DEFAULT"} name="category" onChange={this.onChangeValue} as="select">
-                                <option value="DEFAULT" disabled>Choose..</option>
-                                <option value="1">Drink</option>
-                                <option value="2">Food</option>
+                        <option selected value={0} disabled>
+                        Choose...
+                      </option>
+                      {category.map((category, index) => (
+                        <option key={index} value={category.id}>
+                          {category.name}
+                        </option>
+                      ))}
                             </Form.Control></Form.Group>
                         <Form.Group>
                             <Form.Label>Stock</Form.Label>
@@ -100,7 +107,7 @@ class AddProduct extends Component{
 
 const mapStateToProps = state => {
     return{
-      products: state.products
+      category: state.category.category
     }
   }
 

@@ -2,11 +2,12 @@ import axios from 'axios'
 require ( 'dotenv' ).config(); 
 
 export const getUser = () => {
+  console.log('get user')
   return {
     type: 'GET_USER',
     payload: axios({
       method: 'GET',
-      url: 'http://localhost:8006/user'
+      url: `${process.env.REACT_APP_API_URL}/user`
     })
   }
 }
@@ -14,14 +15,14 @@ export const getUser = () => {
 export const postUser = (data) => {
   return {
     type: 'POST_USER',
-    payload: axios.post('http://localhost:8006/user/register', data)
+    payload: axios.post(`${process.env.REACT_APP_API_URL}/user/register`, data)
   }
 }
 
 export const deleteUser = (id) => {
   return {
     type: 'DELETE_USER',
-    payload: axios.delete(`http://localhost:8006/user/${id}`)
+    payload: axios.delete(`${process.env.REACT_APP_API_URL}/user/${id}`)
   }
 }
 
@@ -30,7 +31,7 @@ export const updateUser = (userId, data) => {
     type: 'UPDATE_USER',
     payload: axios({
       method: 'PATCH',
-      url: `http://localhost:8006/user/${userId}`,
+      url: `${process.env.REACT_APP_API_URL}/user/${userId}`,
       data: data
     })
   }

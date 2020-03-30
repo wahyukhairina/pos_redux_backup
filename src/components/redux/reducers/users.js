@@ -3,6 +3,7 @@ const initialState = {
 }
 
 const users = (state = initialState, action) => {
+  console.log(action)
   switch (action.type) {
     case 'GET_USER_PENDING':
       return {

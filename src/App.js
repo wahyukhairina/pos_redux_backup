@@ -9,6 +9,7 @@ import Login from './components/auth/Login'
 import User from './components/user/User'
 import Product2 from './components/aproduct/Product'
 import Category from './components/category/Category'
+import History from './components/history/history'
 
 function App () {
   return (
@@ -20,6 +21,7 @@ function App () {
           <Route path='/user' component={User} />
           <Route path='/product' component={Product2} />
           <Route path='/category' component={Category} />
+          <Route path='/history' component={History} />
           {/* <Route path='/category' component={Category} /> */}
         </Router>
       </PersistGate>

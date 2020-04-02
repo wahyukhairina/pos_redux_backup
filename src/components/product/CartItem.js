@@ -10,10 +10,10 @@ class CartItem extends Component {
   }
 
  addQuantity =async (cart) => {
+   console.log('function', cart.price)
    const initialTotal = this.props.total
    if(cart.stock >= cart.qty){
      const total = initialTotal + cart.price
-     console.log(total)
      cart.total = total
    await  this.props.dispatch(addQty(cart))
     
@@ -62,6 +62,7 @@ class CartItem extends Component {
 
   render () {
     const { cart } = this.props
+    console.log('render', cart.price)
     const initialTotal = this.props.total
     
     return (

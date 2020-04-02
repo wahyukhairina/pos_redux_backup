@@ -19,7 +19,8 @@ class History extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const startDate = this.state.start.toLocaleDateString();
+    const startDate = this.state.start;
+    console.log(startDate)
     const endDate = this.state.end.toLocaleDateString();
     this.props.dispatch(getHistory(startDate, endDate));
   };

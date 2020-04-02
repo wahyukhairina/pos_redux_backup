@@ -7,7 +7,7 @@ export const getProducts = (data) => {
     type: 'GET_PRODUCTS',
     payload: axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_API_URL}/product`,
+      url: `${process.env.REACT_APP_API_URL}/product/?limit=6`,
       headers: data
     })
   }

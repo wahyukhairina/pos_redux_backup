@@ -81,17 +81,10 @@ const product = (state = initialState, action) => {
         isLoading: true
       }
     case 'UPDATE_PRODUCTS_FULFILLED':
-      console.log(action.payload)
-      const newProductUpdate = state.products.map(products => {
-        if (products.id === action.payload.data.result.productId) {
-          return action.payload.data.result
-        }
-        return products
-      })
       return {
         ...state,
         isLoading: false,
-        products: newProductUpdate
+        products: action.payload.data.result
       }
     case 'SEARCH_PRODUCTS_PENDING':
       return {

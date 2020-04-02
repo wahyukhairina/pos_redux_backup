@@ -24,7 +24,7 @@ const order = (state = initialState, action) => {
         ...state
       };
     case "GET_HISTORY_FULFILLED":
-      console.log(action.payload)
+      console.log('ININIINI', action.payload)
       return {
         ...state,
         histories: action.payload.data

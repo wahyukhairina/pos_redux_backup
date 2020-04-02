@@ -152,6 +152,7 @@ class Product extends Component {
 
   render() {
     const { products, pagination } = this.props;
+    console.log('hahah', products)
     const ItemProduct = products.map(products => (
       <ProductItem
         products={products}

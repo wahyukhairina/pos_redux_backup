@@ -28,7 +28,7 @@ class Product extends Component {
     search: ""
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     var q = querystring.parse(this.props.location.search);
 
     if (q.sortType !== undefined) {
@@ -54,7 +54,7 @@ class Product extends Component {
       this.props.dispatch(searchProduct(search, auth));
     } else {
       console.log("getall");
-      this.getAllProducts();
+    await this.getAllProducts();
     }
   }
 

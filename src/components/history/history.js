@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getHistory } from "../redux/actions/checkout";
@@ -11,16 +11,16 @@ import Navbar from "../layout/Navbar";
 class History extends Component {
   state = {
     start: new Date(),
-    end: new Date()
+    end: new Date(),
   };
 
-  onStart = event => this.setState({ start: event });
-  onEnd = event => this.setState({ end: event });
+  onStart = (event) => this.setState({ start: event });
+  onEnd = (event) => this.setState({ end: event });
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     const startDate = this.state.start;
-    console.log(startDate)
+    console.log(startDate);
     const endDate = this.state.end.toLocaleDateString();
     this.props.dispatch(getHistory(startDate, endDate));
   };
@@ -30,7 +30,7 @@ class History extends Component {
     let x = [];
     let y = [];
     let i = 0;
-    histories.forEach(item => {
+    histories.forEach((item) => {
       x[i] = item.date;
       y[i] = item.total;
       i++;
@@ -57,9 +57,9 @@ class History extends Component {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: y
-        }
-      ]
+          data: y,
+        },
+      ],
     };
 
     return (
@@ -74,23 +74,26 @@ class History extends Component {
                 <Sidebar />
               </div>
               <div className="col-md-11">
-                <div className="row" style={{marginTop: "10px"}}>
+                <div className="row" style={{ marginTop: "10px" }}>
                   <div className="col-md-5">
                     <div>Start Date</div>
-                    <Calendar
+                    <DatePicker
+                      selected={this.state.start}
                       onChange={this.onStart}
-                      value={this.state.start}
                     />
                   </div>
                   <div className="col-md-5">
                     <div> End Date</div>
-                    <Calendar onChange={this.onEnd} value={this.state.end} />
+                    <DatePicker
+                      selected={this.state.end}
+                      onChange={this.onEnd}
+                    />
                   </div>
                   <div className="col-md-2">
                     <Button onClick={this.onSubmit}>Submit</Button>
                   </div>
                 </div>
-                <div className="col-md-10" style={{marginTop:'20px'}}>
+                <div className="col-md-10" style={{ marginTop: "20px" }}>
                   <Line data={data} />
                 </div>
               </div>
@@ -102,9 +105,9 @@ class History extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    histories: state.order.histories
+    histories: state.order.histories,
   };
 };
 export default connect(mapStateToProps)(History);

@@ -8,24 +8,14 @@ import { logout } from '../redux/actions/auth'
 class Home extends Component {
 
   componentDidMount () {
-    // if (!localStorage.getItem('isAuth')) {
-    //   this.props.history.push('/login')
-    // }
+   
     if (!this.props.auth.isAuthenticated) {
       this.props.history.push('/login')
     }
-    // if (localStorage.getItem('status') !== 'admin') {
-    //   this.onLogout()
-     
-    // }
+    
   }
 
   onLogout () {
-    // localStorage.removeItem('user-id')
-    // localStorage.removeItem('token')
-    // localStorage.removeItem('isAuth')
-    // localStorage.removeItem('name')
-    // localStorage.removeItem('status')
     this.props.dispatch(logout())
     this.props.history.push('/login')
   }

@@ -22,7 +22,6 @@ function App () {
           <Route path='/product' component={Product2} />
           <Route path='/category' component={Category} />
           <Route path='/history' component={History} />
-          {/* <Route path='/category' component={Category} /> */}
         </Router>
       </PersistGate>
     </Provider>

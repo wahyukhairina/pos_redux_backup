@@ -1,4 +1,4 @@
-<h1 align='center'>Totain <br>Point of Sales Web Application</h1>
+<h1 align='center'>Totalin <br>Point of Sales Web Application</h1>
 
 <p align='center'>
     <img width="800" src='https://user-images.githubusercontent.com/61218212/78554842-13901c00-7836-11ea-97c2-c7518fb24742.png' />

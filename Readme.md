@@ -8,7 +8,7 @@
 <br>
 
 ## Introduction
-[![React](https://img.shields.io/badge/react%20native-v16.12.0-blue)](https://facebook.github.io/react-native/)
+[![React-Native](https://img.shields.io/badge/react%20native-v16.12.0-blue)](https://facebook.github.io/react-native/)
 
 <p align='justify'>GeoChat is an Chat Application with maps feature to track/show the user's friend location near to user's current location. GeoChat was built using React Native and Firebase real-time database.</p>
 

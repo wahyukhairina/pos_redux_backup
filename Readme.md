@@ -25,6 +25,10 @@
 ## Visit the Web
 You can visit the web [`here`](http://totalin.s3-website-us-east-1.amazonaws.com/g)
 
+## License
+© [Wahyu Khairina](https://github.com/wahyukhairina/ " Wahyu Khairina")
+
+
 
 
 

@@ -8,7 +8,7 @@
 <br>
 
 ## Introduction
-[![React Native](https://img.shields.io/badge/react%20native-v0.60.5-blue)](https://facebook.github.io/react-native/)
+[![React](https://img.shields.io/badge/react%20native-v16.12.0-blue)](https://facebook.github.io/react-native/)
 
 <p align='justify'>GeoChat is an Chat Application with maps feature to track/show the user's friend location near to user's current location. GeoChat was built using React Native and Firebase real-time database.</p>
 
@@ -23,7 +23,7 @@
 4. Type ` npm start `
 
 ## Visit the Web
-You can Download the APK [`here`](http://totalin.s3-website-us-east-1.amazonaws.com/g)
+You can visit the web [`here`](http://totalin.s3-website-us-east-1.amazonaws.com/g)
 
 
 

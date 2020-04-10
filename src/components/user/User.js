@@ -6,7 +6,6 @@ import Navbar from '../layout/Navbar'
 import Sidebar from '../layout/Sidebar'
 import AddUser from '../modals/AddUser'
 import DeleteUser from '../modals/DeleteUser'
-import { Container, Row, Col, Button, Table } from 'react-bootstrap'
 
 
 class User extends Component {

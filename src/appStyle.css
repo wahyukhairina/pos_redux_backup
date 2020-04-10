@@ -1,0 +1,46 @@
+.bold {
+    font-weight: bold;
+}
+
+.icons {
+    cursor: pointer;
+    color: black;
+}
+
+.cardStyle {
+    margin-top: 10px;
+    max-width: 300px;
+    width: 250px;
+}
+
+.image {
+    margin-top: 3px;
+    width : 210px;
+    height : 210px;
+}
+
+.sidebarIcon {
+    margin-top: 20px;
+    margin-left: 20px;
+    color: grey; 
+}
+
+.navbar {
+    background-color: #DB7093;
+    font-family: Ubuntu;
+}
+
+.button {
+    background:#DB7093;
+    color: #e9e9e9;
+}
+
+.addButton {
+    margin-top: 10px;
+    margin-left: 8px;
+    color: grey;
+}
+
+.secondary {
+    color: #848484
+}

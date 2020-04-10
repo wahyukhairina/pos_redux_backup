@@ -152,7 +152,6 @@ class Product extends Component {
 
   render() {
     const { products, pagination } = this.props;
-    console.log('hahah', products)
     const ItemProduct = products.map(products => (
       <ProductItem
         products={products}
@@ -190,8 +189,7 @@ class Product extends Component {
                           aria-label="Search"
                         />
                         <button
-                          className="btn btn"
-                          style={{ background: "#DB7093", color: "#e9e9e9" }}
+                          className="btn btn button"
                           type="submit"
                         >
                           Search
@@ -204,12 +202,7 @@ class Product extends Component {
                     <a
                       onClick={this.addShow}
                       title="Add Product"
-                      style={{
-                        marginTop: "10px",
-                        marginLeft: "8px",
-                        color: "grey"
-                      }}
-                      className="fa fa-plus fa-2x"
+                      className="fa fa-plus fa-2x addButton"
                       href="#"
                     />
                   </div>
@@ -219,7 +212,7 @@ class Product extends Component {
                   <div className="col-md-6">
                     <ul className="pagination" style={{ marginTop: "10px" }}>
                       <li class="page-item">
-                        <a class="page-link" style={{ color: "#848484" }}>
+                        <a class="page-link secondary">
                           Previous
                         </a>
                       </li>
@@ -236,8 +229,7 @@ class Product extends Component {
                       ))}
                       <li class="page-item">
                         <a
-                          class="page-link"
-                          style={{ color: "#848484" }}
+                          class="page-link secondary"
                           href="#"
                         >
                           Next
@@ -248,11 +240,10 @@ class Product extends Component {
                   <div className="col-md-6">
                     <ul style={{ marginTop: "10px", marginLeft: "60px" }}>
                       {" "}
-                      <h7 style={{ color: "grey" }}>
+                      <h7 className='secondary'>
                         SORT PRICE :{" "}
                         <button
-                          className="btn btn"
-                          style={{ background: "#DB7093", color: "#e9e9e9" }}
+                          className="btn btn button"
                           value="ASC"
                           onClick={this.onClickSort}
                         >
@@ -261,8 +252,7 @@ class Product extends Component {
                         </button>{" "}
                         |{" "}
                         <button
-                          className="btn btn"
-                          style={{ background: "#DB7093", color: "white" }}
+                          className="btn btn button"
                           value="DESC"
                           onClick={this.onClickSort}
                         >

@@ -9,32 +9,28 @@ class Sidebar extends Component {
       return (
         <ul className="nav flex-column">
           <Link
-            className="fa fa-book fa-2x"
+            className="fa fa-book fa-2x sidebarIcon"
             title="Menu"
-            style={{ marginTop: "20px", marginLeft: "20px", color: "grey" }}
             to="/product"
           />
           <li className="nav-item">
             <Link
-              className="fa fa-list-alt fa-2x"
+              className="fa fa-list-alt fa-2x sidebarIcon"
               title="Category"
-              style={{ marginTop: "20px", marginLeft: "20px", color: "grey" }}
               to="/category"
             />
           </li>
           <li className="nav-item">
             <Link
-              className="fa fa-user fa-2x"
+              className="fa fa-user fa-2x sidebarIcon"
               title="User"
-              style={{ marginTop: "20px", marginLeft: "20px", color: "grey" }}
               to="/user"
             />
           </li>
           <li className="nav-item">
             <Link
-              className="fa fa-file-text fa-2x"
+              className="fa fa-file-text fa-2x sidebarIcon"
               title="History"
-              style={{ marginTop: "20px", marginLeft: "20px", color: "grey" }}
               to="/history"
             />
           </li>
@@ -45,7 +41,6 @@ class Sidebar extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state.products.pagination)
   return {
     auth: state.auth
   };

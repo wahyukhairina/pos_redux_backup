@@ -210,7 +210,7 @@ class Product extends Component {
                 <div className="row">{ItemProduct}</div>
                 <div className="row">
                   <div className="col-md-6">
-                    <ul className="pagination" style={{ marginTop: "10px" }}>
+                    <ul className="pagination">
                       <li class="page-item">
                         <a class="page-link secondary">
                           Previous
@@ -238,7 +238,7 @@ class Product extends Component {
                     </ul>
                   </div>
                   <div className="col-md-6">
-                    <ul style={{ marginTop: "10px", marginLeft: "60px" }}>
+                    <ul className='bottom'>
                       {" "}
                       <h7 className='secondary'>
                         SORT PRICE :{" "}
@@ -268,7 +268,7 @@ class Product extends Component {
 
           <div className="col-md-3">
             <h2
-              style={{ color: "grey", marginTop: "20px", marginBottom: "70px" }}
+              className ='cart secondary'
             >
               Cart
             </h2>

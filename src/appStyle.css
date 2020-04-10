@@ -44,3 +44,16 @@
 .secondary {
     color: #848484
 }
+
+.bottom {
+    margin-top: 10px;
+    margin-left: 60px;
+}
+.pagination{
+    margin-top: 10px;
+}
+
+.cart {
+    margin-top: 20px;
+    margin-bottom: 70px;
+}

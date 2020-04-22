@@ -9,8 +9,8 @@
 
 ## Introduction
 [![React](https://img.shields.io/badge/react-v16.12.0-blue)](https://github.com/facebook/react)
-
-<p align='justify'>GeoChat is an Chat Application with maps feature to track/show the user's friend location near to user's current location. GeoChat was built using React Native and Firebase real-time database.</p>
+Totalin mobile application is the mobile version of Totalin web application. Built with ReactNative, this software aims to bring more ease for users to manage their business transaction. Featured with transaction calculation, cart, transaction history, product and user management
+<p align='justify'></p>
 
 ## Requirements
 1. <a href="https://nodejs.org/en/download/">Node Js</a>
